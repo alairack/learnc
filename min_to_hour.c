@@ -21,8 +21,8 @@ int main(void)
 		{
 			hr = time / hour;
 			min = time % hour;
+			printf("%d h %d min\n", hr, min);
 		}
-		printf("%d h %d min\n", hr, min);
 	}
 	return 0;
 }
