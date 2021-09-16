@@ -1,6 +1,6 @@
 /* 把用分钟表示的时间转换成用小时和分钟表示的时间 */
 #include <stdio.h>
-#define hour 60
+#define AN_HOUR_OF_MINUTES 60
 
 int main(void)
 {
@@ -19,8 +19,8 @@ int main(void)
 			break;
 		else
 		{
-			hr = time / hour;
-			min = time % hour;
+			hr = time / AN_HOUR_OF_MINUTES;
+			min = time % AN_HOUR_OF_MINUTES;
 			printf("%d h %d min\n", hr, min);
 		}
 	}

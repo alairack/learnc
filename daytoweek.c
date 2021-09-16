@@ -1,6 +1,6 @@
 /*输入天数，把天数转换为周数和天数*/
 #include <stdio.h>
-#define week 7
+#define A_WEEK_OF_DAYS 7
 
 int main(void)
 {
@@ -19,8 +19,8 @@ int main(void)
 			break;
 		else
 		{
-			weeks = input_days / week;
-			days = input_days % week;
+			weeks = input_days / A_WEEK_OF_DAYS;
+			days = input_days % A_WEEK_OF_DAYS;
 			printf("%d days are %d weeks, %d days\n", input_days, weeks, days);
 		}
 	}
