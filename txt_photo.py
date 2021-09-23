@@ -28,28 +28,8 @@ def main():
 
 
 def convert_char(character):
-    if character == '0':
-        return " "
-    elif character == "1":
-        return "."
-    elif character == '2':
-        return "`"
-    elif character == '3':
-        return ":"
-    elif character == '4':
-        return "~"
-    elif character == '5':
-        return "*"
-    elif character == '6':
-        return "="
-    elif character == '7':
-        return "&"
-    elif character == '8':
-        return "%"
-    elif character == '9':
-        return "#"
-    else:
-        raise OSError
+    convert = {'0': " ", '1': ".", '2': "`", '3': ":", '4': "~", '5': "*", '6': "=", '7': "&", '8': "%", '9': "#"}
+    return convert[character]
 
 
 if __name__ == "__main__":
@@ -61,14 +41,5 @@ if __name__ == "__main__":
     except FileNotFoundError:
         print("file not found!\n")
         exit(3)
-
-
-
-
-
-
-
-
-
-
-
+    except KeyError:
+        print("the numbers of file is unsupported!\n")
