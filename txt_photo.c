@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
 	ch = getc(src);
 	while (ch != EOF)
 	{
-		printf("%c", convert_ch[ch-48]);
+		printf("%c", convert_ch[ch-48]);                      
 		putc(convert_ch[ch-48], export);
 		ch = getc(src);
 		while (ch == 32 || ch == 13 || ch == 10)    /*如获取到空格则获取下一个*/
