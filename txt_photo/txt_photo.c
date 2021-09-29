@@ -1,17 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+char * configuration(void)
+{
+	FILE* config;
+	config = fopen("config.txt", "r");
+	if (config == NULL)
+	{
+		static char convert_ch[14] = { ' ', '.', '`', ':', '~', '*', '=', '&', '%', '#' };
+		FILE* write_config = fopen("config.txt", "w");
+		for (int x = 0; x < 10; x++)
+			fprintf(write_config, "%d %c\n", x, convert_ch[x]);
+		fclose(write_config);
+		return convert_ch;
+	}
+	else
+	{
+		static char convert_ch[15];
+		char line[12];
+		while (fgets(line, 10, config) != NULL)
+		{
+			convert_ch[line[0] - '0'] = line[2];                              /*  -'0' 方法把char转换为int */
+		}
+		fclose(config);
+		return convert_ch;
+	}
+
+}
+
 int main(int argc, char* argv[])
 {
-	if (argc < 2)
+	if (argc < 2 || argc > 6)
 	{
 		printf("please enter parameter!\n");
 		return 3;
 	}
+	const char* convert_ch = configuration();
 	int ch;
 	FILE* src;
 	FILE* export;
-	const char convert_ch[14] = {' ', '.', '`', ':', '~', '*', '=', '&', '%', '#'};
 	src = fopen(argv[1], "rb");
 	export = fopen("export.txt", "w");
 	if (export == NULL)
@@ -35,6 +63,11 @@ int main(int argc, char* argv[])
 			if (ch == 10)
 			{
 				putc(10, export);
+			}
+			if (ch == 32)                      /*如果是空格则直接打印和保存*/
+			{
+				putc(32, export);
+				putchar(32);
 			}
 			ch = getc(src);
 		}
