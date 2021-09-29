@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 {
 	if (argc < 2 || argc > 6)
 	{
-		printf("please enter parameter!\n");
+		printf("please check parameter!\n");
 		return 3;
 	}
 	const char* convert_ch = configuration();
